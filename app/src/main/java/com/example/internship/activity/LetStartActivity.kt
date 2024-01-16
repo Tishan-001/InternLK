@@ -21,7 +21,8 @@ class LetStartActivity : AppCompatActivity() {
         })
 
         letsGoCompany.setOnClickListener(View.OnClickListener {
-
+            val intent = Intent(this@LetStartActivity, CompanyLoginActivity::class.java)
+            startActivity(intent)
         })
     }
 }
