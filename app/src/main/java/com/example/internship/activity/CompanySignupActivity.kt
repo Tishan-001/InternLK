@@ -20,13 +20,13 @@ class CompanySignupActivity : AppCompatActivity() {
     private lateinit var database : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityCompanySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("Company")
 
-        val alreadySignupButton = findViewById<TextView>(R.id.alreadySignupBtn)
-
+        val alreadySignupButton = findViewById<TextView>(R.id.alreadySignupBtnCompany)
 
         alreadySignupButton.setOnClickListener(View.OnClickListener {
             val intent = Intent(this@CompanySignupActivity, UserLoginActivity::class.java)
