@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.internship.fragments.FragmentHome"
+        android:label="fragmentHome"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_appliedFragment"
+            app:destination="@id/fragmentApplied"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentApplied"
+        android:name="com.example.internship.fragments.FragmentApplied"
+        android:label="fragmentApplied"
+        tools:layout="@layout/fragment_applied">
+        <action
+            android:id="@+id/action_appliedFragment_to_acceptedFragment"
+            app:destination="@id/fragmentAccepted"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAccepted"
+        android:name="com.example.internship.fragments.FragmentAccepted"
+        android:label="fragmentAccepted"
+        tools:layout="@layout/fragment_accepted">
+        <action
+            android:id="@+id/action_acceptedFragment_to_profileFragment"
+            app:destination="@id/fragmentProfile"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.internship.fragments.FragmentProfile"
+        android:label="fragmentProfile"
+        tools:layout="@layout/fragment_profile">
+    </fragment>
+
+</navigation>

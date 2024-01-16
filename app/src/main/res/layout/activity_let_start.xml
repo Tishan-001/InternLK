@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.LetStartActivity">
+
+    <TextView
+        android:id="@+id/Title_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:text="Let's Start As"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/pic_01"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/img_3" />
+
+    <TextView
+        android:id="@+id/subtitle_01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:gravity="center"
+        android:text="Challenge yourself towards your future dream job bunch of benefits" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/menubtn_01"
+            android:layout_width="8dp"
+            android:layout_height="15dp"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/menubtn_02"
+            android:layout_width="8dp"
+            android:layout_height="15dp"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/menubtn_03"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Button" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/letsStartAsStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:text="Student" />
+
+    <Button
+        android:id="@+id/letsStartAsCompany"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:text="Company" />
+
+</LinearLayout>
