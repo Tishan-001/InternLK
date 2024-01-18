@@ -7,7 +7,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.internship.fragments.FragmentAboutCompany
 import com.example.internship.fragments.FragmentDescription
 import com.example.internship.model.Internship
-import com.example.internship.model.Job
 
 class FragmentPageAdapter(
     fragmentManager: FragmentManager,

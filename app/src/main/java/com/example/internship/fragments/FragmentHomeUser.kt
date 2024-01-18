@@ -8,12 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internship.adapter.ActivelyHiringAdapter
-import com.example.internship.model.Job
-import com.example.internship.adapter.NewInternshipAdapter
 import com.example.internship.R
 import com.example.internship.databinding.FragmentHomeUserBinding
 import com.example.internship.model.Internship
@@ -57,7 +54,7 @@ class FragmentHomeUser : Fragment() {
         progressDialog.setTitle("Data Loading...")
         progressDialog.setMessage("Processing...")
 
-        val layoutManagerActivelyHiring = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManagerActivelyHiring = GridLayoutManager(context, 1)
         recyclerViewActivelyHiring = view.findViewById(R.id.activelyHiring)
         recyclerViewActivelyHiring.layoutManager = layoutManagerActivelyHiring
         val snapHelper = LinearSnapHelper()

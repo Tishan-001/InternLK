@@ -110,8 +110,6 @@ class UploadActivity : AppCompatActivity() {
         benefitArrayList.addAll(benefitArray)
 
 
-        val internship = Internship(imageUrl, title, companyName, uid, location, duration, 0, requirementArrayList, benefitArrayList)
-
         val progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Data Saving...")
         progressDialog.setMessage("Processing...")
@@ -119,6 +117,7 @@ class UploadActivity : AppCompatActivity() {
 
         val internshipId = database.child("internships").push().key
         if (internshipId != null) {
+            val internship = Internship(internshipId, imageUrl, title, companyName, uid, location, duration, 0, requirementArrayList, benefitArrayList)
             database.child("internships").child(internshipId).setValue(internship)
                 .addOnSuccessListener {
                     progressDialog.dismiss()

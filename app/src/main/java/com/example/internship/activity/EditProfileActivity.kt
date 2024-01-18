@@ -25,7 +25,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import java.util.UUID
 
-class EditProfile : AppCompatActivity() {
+class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityEditProfileBinding
     private lateinit var database: DatabaseReference
@@ -98,10 +98,10 @@ class EditProfile : AppCompatActivity() {
                     Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Log.e("EditProfile", "Image URL is null")
+                Log.e("EditProfileActivity", "Image URL is null")
             }
 
-            val intent = Intent(this@EditProfile, FragmentProfileUser::class.java)
+            val intent = Intent(this@EditProfileActivity, FragmentProfileUser::class.java)
             startActivity(intent)
 
             if(uid.isNotEmpty()){
@@ -130,16 +130,16 @@ class EditProfile : AppCompatActivity() {
                         binding.editTextDescription.setText(user.description)
 
                     } else {
-                        Log.e("EditProfile", "User snapshot is null")
+                        Log.e("EditProfileActivity", "User snapshot is null")
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.e("EditProfile", "Database error: ${error.message}")
+                    Log.e("EditProfileActivity", "Database error: ${error.message}")
                 }
             })
         } else {
-            Log.e("EditProfile", "Uid is null")
+            Log.e("EditProfileActivity", "Uid is null")
         }
 
 

@@ -9,10 +9,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.internship.model.Job
 import com.example.internship.R
+import com.example.internship.activity.ApplyActivity
 import com.example.internship.activity.DetailsActivity
 import com.example.internship.model.Internship
+import com.google.android.material.button.MaterialButton
 import com.squareup.picasso.Picasso
 
 class ActivelyHiringAdapter(val items: ArrayList<Internship>, val context: Context?): RecyclerView.Adapter<ActivelyHiringAdapter.Viewholder>() {
@@ -24,6 +25,7 @@ class ActivelyHiringAdapter(val items: ArrayList<Internship>, val context: Conte
         val location: TextView = itemView.findViewById(R.id.location)
         val time: TextView = itemView.findViewById(R.id.actively_time)
         val applicants: TextView = itemView.findViewById(R.id.applicants)
+        val applyButton: MaterialButton = itemView.findViewById(R.id.apply)
 
     }
 
@@ -45,6 +47,12 @@ class ActivelyHiringAdapter(val items: ArrayList<Internship>, val context: Conte
 
         holder.itemView.setOnClickListener{
             val intent = Intent(context, DetailsActivity::class.java)
+            intent.putExtra("item", currentItem)
+            context?.startActivity(intent)
+        }
+
+        holder.applyButton.setOnClickListener{
+            val intent = Intent(context, ApplyActivity::class.java)
             intent.putExtra("item", currentItem)
             context?.startActivity(intent)
         }

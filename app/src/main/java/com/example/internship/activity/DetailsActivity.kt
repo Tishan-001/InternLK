@@ -8,7 +8,6 @@ import com.google.android.material.tabs.TabLayout
 import com.example.internship.R
 import com.example.internship.adapter.FragmentPageAdapter
 import com.example.internship.model.Internship
-import com.example.internship.model.Job
 import com.squareup.picasso.Picasso
 
 @Suppress("DEPRECATION")
