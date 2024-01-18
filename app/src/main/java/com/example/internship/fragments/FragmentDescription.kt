@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internship.R
 import com.example.internship.databinding.FragmentDescriptionBinding
-import com.example.internship.model.Job
+import com.example.internship.model.Internship
 
 @Suppress("DEPRECATION")
 class FragmentDescription:Fragment() {
@@ -18,15 +18,15 @@ class FragmentDescription:Fragment() {
     private lateinit var binding: FragmentDescriptionBinding
     private lateinit var requirementRecyclerView: RecyclerView
     private lateinit var benefitRecyclerView: RecyclerView
-    private var job: Job? = null
+    private var internship: Internship? = null
 
     companion object {
-        private const val ARG_JOB = "arg_job"
+        private const val ARG_INTERNSHIP = "arg_internship"
 
-        fun newInstance(item: Job): FragmentDescription {
+        fun newInstance(item: Internship): FragmentDescription {
             val fragment = FragmentDescription()
             val args = Bundle()
-            args.putSerializable(ARG_JOB, item)
+            args.putSerializable(ARG_INTERNSHIP, item)
             fragment.arguments = args
             return fragment
         }
@@ -38,16 +38,16 @@ class FragmentDescription:Fragment() {
     ): View? {
         binding = FragmentDescriptionBinding.inflate(layoutInflater)
         arguments?.let {
-            job = it.getSerializable(ARG_JOB) as? Job
+            internship = it.getSerializable(ARG_INTERNSHIP) as? Internship
         }
         val rootView = inflater.inflate(R.layout.fragment_description, container, false)
         requirementRecyclerView = rootView.findViewById(R.id.requirement)
         benefitRecyclerView = rootView.findViewById(R.id.benefit)
 
         // Check if job is not null before proceeding
-        job?.let { validJob ->
-            setupRecyclerView(requirementRecyclerView, validJob.requirement)
-            setupRecyclerView(benefitRecyclerView, validJob.benefit)
+        internship?.let { validInternship ->
+            setupRecyclerView(requirementRecyclerView, validInternship.requirement)
+            setupRecyclerView(benefitRecyclerView, validInternship.benefit)
         }
 
         return rootView
