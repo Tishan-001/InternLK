@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageButton
+                android:id="@+id/backApply"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_rounded_small"
+                android:backgroundTint="@color/cardBackground"
+                android:src="@drawable/icons8_back"
+                app:tint="@color/primary" />
+
+            <EditText
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/backApply"
+                android:hint="Name" />
+
+            <EditText
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Name"
+                android:layout_marginTop="16dp"
+                android:hint="Gender" />
+
+            <EditText
+                android:id="@+id/ContactNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gender"
+                android:layout_marginTop="16dp"
+                android:inputType="phone"
+                android:hint="Contact Number" />
+
+            <EditText
+                android:id="@+id/Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ContactNo"
+                android:layout_marginTop="16dp"
+                android:hint="Email" />
+
+            <EditText
+                android:id="@+id/University"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Email"
+                android:layout_marginTop="16dp"
+                android:hint="University" />
+
+            <EditText
+                android:id="@+id/Skills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/University"
+                android:layout_marginTop="16dp"
+                android:hint="Skills" />
+
+            <EditText
+                android:id="@+id/experience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Skills"
+                android:layout_marginTop="16dp"
+                android:hint="Experience" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Skills"
+                android:layout_marginTop="88dp"
+                android:hint="description"
+                android:inputType="textMultiLine"
+                android:lines="5" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:layout_marginTop="88dp"
+                android:hint="education"
+                android:inputType="textMultiLine"
+                android:lines="5" />
+
+            <Button
+                android:id="@+id/applyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/education"
+                android:layout_marginTop="30dp"
+                android:text="Apply" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
