@@ -14,6 +14,7 @@ import com.example.internship.R
 import com.example.internship.activity.UploadActivity
 import com.example.internship.adapter.NewInternshipAdapter
 import com.example.internship.databinding.FragmentHomeCompanyBinding
+import com.example.internship.model.Company
 import com.example.internship.model.Internship
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 
 class FragmentHomeCompany : Fragment() {
 
@@ -32,7 +34,10 @@ class FragmentHomeCompany : Fragment() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database : DatabaseReference
+    private lateinit var databaseReference: DatabaseReference
     private lateinit var eventListener: ValueEventListener
+    private lateinit var uid: String
+    private lateinit var company: Company
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,8 +56,15 @@ class FragmentHomeCompany : Fragment() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().getReference("Internship")
+        databaseReference = FirebaseDatabase.getInstance().getReference("Company")
 
-        val uid = firebaseAuth.currentUser?.uid.toString()
+        uid = firebaseAuth.currentUser?.uid.toString()
+        if(uid.isNotEmpty()){
+            getCompanyData()
+        }
+        else{
+            Log.e("FragmentHomeUser", "Uid is null")
+        }
         newInternshipList = ArrayList()
         newInternshipAdapter = NewInternshipAdapter(newInternshipList)
 
@@ -97,6 +109,26 @@ class FragmentHomeCompany : Fragment() {
                     progressDialog.dismiss()
                 }
             })
+    }
+
+    private fun getCompanyData() {
+        databaseReference.child(uid).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val companySnapshot = snapshot.getValue(Company::class.java)
+                if (companySnapshot != null) {
+                    company = companySnapshot
+                    binding.displayName.text = company.Name.toString()
+                    Picasso.get().load(company.imageUrl).into(binding.photo)
+                    company.imageUrl?.let { Log.e("Image Url", it) }
+                } else {
+                    Log.e("FragmentHome", "User snapshot is null")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("FragmentHome", "Database error: ${error.message}")
+            }
+        })
     }
 
     override fun onDestroyView() {

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Internship"
         tools:targetApi="31">
         <activity
+            android:name=".activity.EditCompanyProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.UploadActivity"
             android:exported="false" />
         <activity
@@ -23,10 +26,10 @@
             android:exported="false" />
         <activity
             android:name=".activity.CompanyActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activity.DetailsActivity"
             android:exported="false" />
@@ -35,15 +38,15 @@
             android:exported="false" />
         <activity
             android:name=".activity.EditProfileActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activity.LetStartActivity"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.UserLoginActivity"
