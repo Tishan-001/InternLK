@@ -17,7 +17,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.example.internship.R
-import com.example.internship.activity.EditProfile
+import com.example.internship.activity.EditProfileActivity
 import com.example.internship.activity.LetStartActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
@@ -41,7 +41,6 @@ class FragmentProfileUser : Fragment() {
         binding = FragmentProfileBinding.inflate(layoutInflater)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -68,7 +67,7 @@ class FragmentProfileUser : Fragment() {
         }
 
         btnEdit.setOnClickListener {
-            val intent = Intent(requireContext(), EditProfile::class.java)
+            val intent = Intent(requireContext(), EditProfileActivity::class.java)
             startActivity(intent)
         }
 

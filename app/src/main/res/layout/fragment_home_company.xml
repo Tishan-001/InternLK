@@ -144,15 +144,13 @@
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:layout_gravity="bottom|start"
+                android:layout_marginTop="400dp"
                 android:backgroundTint="@color/primary"
                 android:src="@drawable/baseline_add_24"
-                app:tint="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteX="320dp"
-                tools:layout_editor_absoluteY="656dp" />
+                app:layout_constraintEnd_toEndOf="@+id/filter"
+                app:layout_constraintTop_toBottomOf="@+id/filter"
+                app:tint="@color/white" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

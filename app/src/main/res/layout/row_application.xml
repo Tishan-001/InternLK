@@ -13,61 +13,62 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/actively_image"
+            android:id="@+id/applicants_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/netflix"
-            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_profile_pic"
+            app:layout_constraintEnd_toEndOf="@+id/accept"
+            app:layout_constraintStart_toStartOf="@+id/accept"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/actively_title"
+            android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UX Writter Intern"
+            android:text="Sam Edward"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.213"
-            app:layout_constraintStart_toEndOf="@+id/actively_image"
-            app:layout_constraintTop_toTopOf="@+id/actively_image" />
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toEndOf="@+id/applicants_image"
+            app:layout_constraintTop_toTopOf="@+id/applicants_image" />
 
         <TextView
-            android:id="@+id/company"
+            android:id="@+id/internName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="Netflix"
+            android:text="UI/UX Intern"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/actively_image"
+            app:layout_constraintBottom_toBottomOf="@id/applicants_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/actively_title"
-            app:layout_constraintTop_toBottomOf="@+id/actively_title"
+            app:layout_constraintStart_toStartOf="@+id/user_name"
+            app:layout_constraintTop_toBottomOf="@+id/user_name"
             app:layout_constraintVertical_bias="0.208" />
 
         <ImageView
-            android:id="@+id/locationIcon"
+            android:id="@+id/phoneIcon"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/icons8_marker"
-            app:layout_constraintStart_toStartOf="@+id/company"
-            app:layout_constraintTop_toBottomOf="@+id/company"
+            app:layout_constraintStart_toStartOf="@+id/internName"
+            app:layout_constraintTop_toBottomOf="@+id/internName"
             app:tint="@color/green" />
 
         <TextView
-            android:id="@+id/location"
+            android:id="@+id/contactNum"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Bandung"
+            android:text="01112455555"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/locationIcon"
+            app:layout_constraintBottom_toBottomOf="@+id/phoneIcon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/locationIcon"
-            app:layout_constraintTop_toTopOf="@+id/locationIcon"
+            app:layout_constraintStart_toEndOf="@+id/phoneIcon"
+            app:layout_constraintTop_toTopOf="@+id/phoneIcon"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
@@ -76,16 +77,16 @@
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/icons8_calendar"
-            app:layout_constraintStart_toStartOf="@+id/locationIcon"
-            app:layout_constraintTop_toBottomOf="@+id/locationIcon"
+            app:layout_constraintStart_toStartOf="@+id/phoneIcon"
+            app:layout_constraintTop_toBottomOf="@+id/phoneIcon"
             app:tint="@color/green" />
 
         <TextView
-            android:id="@+id/actively_time"
+            android:id="@+id/experienceTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="6 Months"
+            android:text="1 Year"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/timeIcon"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,36 +95,48 @@
             app:layout_constraintTop_toTopOf="@+id/timeIcon"
             app:layout_constraintVertical_bias="0.0" />
 
+        <ImageView
+            android:id="@+id/sckillsIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/icons8_calendar"
+            app:layout_constraintStart_toStartOf="@+id/timeIcon"
+            app:layout_constraintTop_toBottomOf="@+id/timeIcon"
+            app:tint="@color/green" />
+
+        <TextView
+            android:id="@+id/skillsText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Front End"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/sckillsIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/sckillsIcon"
+            app:layout_constraintTop_toTopOf="@+id/sckillsIcon"
+            app:layout_constraintVertical_bias="0.0" />
+
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/apply"
+            android:id="@+id/accept"
             style="@style/buttonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:paddingStart="50dp"
-            android:paddingEnd="50dp"
-            android:text="@string/apply"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/Accepted"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/actively_image"
-            app:layout_constraintTop_toBottomOf="@+id/timeIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/applicants_image"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/applicants"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="189Applications"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/apply"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.36"
-            app:layout_constraintStart_toEndOf="@+id/apply"
-            app:layout_constraintTop_toTopOf="@+id/apply" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

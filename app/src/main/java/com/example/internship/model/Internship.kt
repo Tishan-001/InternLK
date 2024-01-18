@@ -2,6 +2,7 @@ package com.example.internship.model
 import java.io.Serializable
 
 data class Internship(
+    val id: String="",
     val imageUrl: String = "",
     val title: String = "",
     val companyName: String = "",
