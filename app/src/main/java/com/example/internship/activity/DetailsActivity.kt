@@ -7,7 +7,9 @@ import com.example.internship.databinding.ActivityDetailsBinding
 import com.google.android.material.tabs.TabLayout
 import com.example.internship.R
 import com.example.internship.adapter.FragmentPageAdapter
+import com.example.internship.model.Internship
 import com.example.internship.model.Job
+import com.squareup.picasso.Picasso
 
 @Suppress("DEPRECATION")
 class DetailsActivity : AppCompatActivity() {
@@ -26,10 +28,10 @@ class DetailsActivity : AppCompatActivity() {
 
         val intent = intent
 
-        val item = intent.getSerializableExtra("item") as? Job
+        val item = intent.getSerializableExtra("item") as? Internship
 
         if (item != null) {
-            binding.imageDetails.setImageResource(item.image)
+            Picasso.get().load(item.imageUrl).into(binding.imageDetails)
             binding.titleDetails.text = item.title
             binding.duration.text = item.duration
             binding.locationDetails.text = item.location

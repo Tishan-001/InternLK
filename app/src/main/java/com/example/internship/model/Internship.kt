@@ -1,5 +1,4 @@
 package com.example.internship.model
-
 import java.io.Serializable
 
 data class Internship(

@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internship.model.Job
 import com.example.internship.R
 import com.example.internship.activity.DetailsActivity
+import com.example.internship.model.Internship
+import com.squareup.picasso.Picasso
 
-class ActivelyHiringAdapter(val items: ArrayList<Job>, val context: Context?): RecyclerView.Adapter<ActivelyHiringAdapter.Viewholder>() {
+class ActivelyHiringAdapter(val items: ArrayList<Internship>, val context: Context?): RecyclerView.Adapter<ActivelyHiringAdapter.Viewholder>() {
 
     class Viewholder(itemView: View): RecyclerView.ViewHolder(itemView)  {
         val image: ImageView = itemView.findViewById(R.id.actively_image)
@@ -34,9 +36,9 @@ class ActivelyHiringAdapter(val items: ArrayList<Job>, val context: Context?): R
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         val currentItem = items[position]
 
-        holder.image.setImageResource(currentItem.image)
+        Picasso.get().load(currentItem.imageUrl).into(holder.image)
         holder.title.text = currentItem.title
-        holder.company.text = currentItem.company
+        holder.company.text = currentItem.companyName
         holder.location.text = currentItem.location
         holder.time.text = currentItem.title
         holder.applicants.text = "${currentItem.applicants} Applicants"
