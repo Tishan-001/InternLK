@@ -6,9 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".activity.CompanyActivity">
 
-    <TextView
+    <fragment
+        android:id="@+id/mainFragmentCompany"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph='@navigation/nav_graph_company'
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewCompany"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </fragment>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewCompany"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Company"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_company_nav">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

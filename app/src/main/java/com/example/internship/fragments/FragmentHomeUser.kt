@@ -14,7 +14,7 @@ import com.example.internship.adapter.ActivelyHiringAdapter
 import com.example.internship.model.Job
 import com.example.internship.adapter.NewInternshipAdapter
 import com.example.internship.R
-import com.example.internship.databinding.FragmentHomeBinding
+import com.example.internship.databinding.FragmentHomeUserBinding
 import com.example.internship.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -22,17 +22,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 
-class FragmentHome : Fragment() {
+class FragmentHomeUser : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeUserBinding
     private lateinit var recyclerViewActivelyHiring: RecyclerView
     private lateinit var activelyHiringList: ArrayList<Job>
     private lateinit var activelyHiringAdapter: ActivelyHiringAdapter
-
-    private lateinit var recyclerViewNewInternship: RecyclerView
-    private lateinit var newInternshipList: ArrayList<Job>
-    private lateinit var newInternshipAdapter: NewInternshipAdapter
 
     private lateinit var arrayRequirementGojek: ArrayList<String>
     private lateinit var arrayBenefitGojek: ArrayList<String>
@@ -47,7 +44,7 @@ class FragmentHome : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentHomeUserBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -75,16 +72,6 @@ class FragmentHome : Fragment() {
         activelyHiringAdapter = ActivelyHiringAdapter(activelyHiringList, requireContext())
         recyclerViewActivelyHiring.adapter = activelyHiringAdapter
 
-        val layoutManagerNewInternship = GridLayoutManager(context, 1)
-        recyclerViewNewInternship = view.findViewById(R.id.newInternship)
-        recyclerViewNewInternship.layoutManager = layoutManagerNewInternship
-        newInternshipList = ArrayList()
-
-        newInternshipList.add(Job(R.drawable.slack, "Product Manager Intern", "Slack", "Silicon Valley", "6 Months", 112, arrayRequirementGojek, arrayBenefitGojek))
-        newInternshipList.add(Job(R.drawable.ic_microsoft, "Research Intern - Social Media Collective", "Microsoft", "Cambridge, MA", "6 Months", 700, arrayRequirementGojek, arrayBenefitGojek))
-        newInternshipAdapter = NewInternshipAdapter(newInternshipList)
-        recyclerViewNewInternship.adapter = newInternshipAdapter
-
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
         databaseReference = FirebaseDatabase.getInstance().getReference("Users")
@@ -92,7 +79,7 @@ class FragmentHome : Fragment() {
             getUserData()
         }
         else{
-            Log.e("FragmentHome", "Uid is null")
+            Log.e("FragmentHomeUser", "Uid is null")
         }
 
     }
@@ -104,13 +91,14 @@ class FragmentHome : Fragment() {
                 if (userSnapshot != null) {
                     user = userSnapshot
                     binding.displayName.text = user.name
+                    Picasso.get().load(user.url).into(binding.photo)
                 } else {
-                    Log.e("FragmentHome", "User snapshot is null")
+                    Log.e("FragmentHomeUser", "User snapshot is null")
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("FragmentHome", "Database error: ${error.message}")
+                Log.e("FragmentHomeUser", "Database error: ${error.message}")
             }
         })
     }

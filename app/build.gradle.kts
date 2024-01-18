@@ -45,6 +45,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation("com.google.firebase:firebase-firestore-ktx:24.10.0")
+    implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
     val nav_version = "2.7.6"
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -57,6 +58,7 @@ dependencies {
 
     implementation("com.tbuonomo:dotsindicator:5.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("com.squareup.picasso:picasso:2.8")
 
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
