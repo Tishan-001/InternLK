@@ -28,11 +28,11 @@ class FragmentApplyCompany : Fragment() {
 
     private lateinit var binding: FragmentApplyCompanyBinding
     private lateinit var recyclerViewApplications: RecyclerView
-    private lateinit var applovations: ArrayList<Application>
+    private lateinit var applcations: ArrayList<Application>
     private lateinit var applicationAdapter: ApplicationAdapter
 
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var database : DatabaseReference
+    private lateinit var database: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,8 +54,8 @@ class FragmentApplyCompany : Fragment() {
         recyclerViewApplications.layoutManager = layoutManagerApplicants
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(recyclerViewApplications)
-        applovations = ArrayList()
-        applicationAdapter = ApplicationAdapter(applovations)
+        applcations = ArrayList()
+        applicationAdapter = ApplicationAdapter(applcations)
         recyclerViewApplications.adapter = applicationAdapter
 
         firebaseAuth = FirebaseAuth.getInstance()
@@ -68,30 +68,32 @@ class FragmentApplyCompany : Fragment() {
             // Assuming companyId is a field in your user model
             val companyId = user.uid
 
-            database.orderByChild("companyId").equalTo(companyId)
-                .addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        applovations.clear()
-                        val array = ArrayList<String>()
-                        for (data in dataSnapshot.children) {
-                            val application = data.getValue()
-                            application?.let {
-                                array.add(it.toString())
+            database.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    applcations.clear()
+
+                    for (userSnapshot in dataSnapshot.children) {
+                        for (applicationSnapshot in userSnapshot.children) {
+                            val application = applicationSnapshot.getValue(Application::class.java)
+                            if (application?.companyId == companyId) {
+                                applcations.add(application)
                             }
                         }
-                        Log.e("Retrieve Applications", array.toString())
-
-                        // Update the adapter after retrieving the data
-                        applicationAdapter.notifyDataSetChanged()
-
-                        progressDialog.dismiss()
                     }
 
-                    override fun onCancelled(error: DatabaseError) {
-                        Log.e("Retrieve Applications", "Error getting applications: $error")
-                        progressDialog.dismiss()
-                    }
-                })
+                    Log.e("Retrieve Applications", applcations.toString())
+
+                    // Update the adapter after retrieving the data
+                    applicationAdapter.notifyDataSetChanged()
+
+                    progressDialog.dismiss()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Retrieve Applications", "Error getting applications: $error")
+                    progressDialog.dismiss()
+                }
+            })
         }
     }
 }
