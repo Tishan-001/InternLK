@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/fragmentHome"
-        android:name="com.example.internship.fragments.FragmentHome"
+        android:name="com.example.internship.fragments.FragmentHomeUser"
         android:label="fragmentHome"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_home_user">
         <action
             android:id="@+id/action_homeFragment_to_appliedFragment"
             app:destination="@id/fragmentApplied"/>
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentProfile"
-        android:name="com.example.internship.fragments.FragmentProfile"
+        android:name="com.example.internship.fragments.FragmentProfileUser"
         android:label="fragmentProfile"
         tools:layout="@layout/fragment_profile">
     </fragment>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.FragmentProfile">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!-- res/layout/activity_student_profile.xml -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile_pic" />
+
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your name"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:width="300dp"
+            android:layout_marginTop="200dp"/>
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:width="300dp"
+            android:layout_marginTop="250dp"/>
+
+        <EditText
+            android:id="@+id/editTextGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your gender"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:width="300dp"
+            android:layout_marginTop="300dp"/>
+
+
+        <EditText
+            android:id="@+id/editTextExperience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your experience"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:width="300dp"
+            android:layout_marginTop="350dp"/>
+
+        <EditText
+            android:id="@+id/editTextSkills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your skills"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:width="300dp"
+            android:layout_marginTop="400dp"/>
+
+        <EditText
+            android:id="@+id/editTextUniversity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your university"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:width="300dp"
+            android:layout_marginTop="450dp"/>
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter a short description"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:width="300dp"
+            android:layout_marginTop="500dp"/>
+
+        <EditText
+            android:id="@+id/editTextProffesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your Proffession"
+            android:inputType="textPersonName"
+            android:layout_marginLeft="20dp"
+            android:width="300dp"
+            android:layout_marginTop="550dp"/>
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="600dp"/>
+
+    </RelativeLayout>
+
+
+</FrameLayout>
