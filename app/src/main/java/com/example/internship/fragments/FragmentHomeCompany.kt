@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internship.R
 import com.example.internship.activity.UploadActivity
+import com.example.internship.adapter.ActivelyHiringAdapter
 import com.example.internship.adapter.NewInternshipAdapter
 import com.example.internship.databinding.FragmentHomeCompanyBinding
 import com.example.internship.model.Company
@@ -31,6 +33,7 @@ class FragmentHomeCompany : Fragment() {
     private lateinit var recyclerViewNewInternship: RecyclerView
     private lateinit var newInternshipList: ArrayList<Internship>
     private lateinit var newInternshipAdapter: NewInternshipAdapter
+    private lateinit var dataList: MutableList<Internship>
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database : DatabaseReference
@@ -49,6 +52,20 @@ class FragmentHomeCompany : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //search
+        binding.searchCompany.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Handle the submission of the query
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchList(newText)
+                Log.e("newText",newText)
+                return true
+            }
+        })
 
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setTitle("Data Loading...")
@@ -66,7 +83,7 @@ class FragmentHomeCompany : Fragment() {
             Log.e("FragmentHomeUser", "Uid is null")
         }
         newInternshipList = ArrayList()
-        newInternshipAdapter = NewInternshipAdapter(newInternshipList)
+        newInternshipAdapter = NewInternshipAdapter(newInternshipList, requireContext())
 
         val fab = view.findViewById<FloatingActionButton>(R.id.fab)
 
@@ -101,6 +118,8 @@ class FragmentHomeCompany : Fragment() {
                     // Update the adapter after retrieving the data
                     newInternshipAdapter.notifyDataSetChanged()
 
+                    dataList = newInternshipList.toMutableList()
+
                     progressDialog.dismiss()
                 }
 
@@ -129,6 +148,17 @@ class FragmentHomeCompany : Fragment() {
                 Log.e("FragmentHome", "Database error: ${error.message}")
             }
         })
+    }
+
+    private fun searchList(text: String){
+        val searchList = ArrayList<Internship>()
+        for (dataClass in dataList){
+            if(dataClass.title?.lowercase()?.contains(text.lowercase()) == true){
+                searchList.add(dataClass)
+            }
+        }
+        newInternshipAdapter = NewInternshipAdapter(searchList, requireContext())
+        recyclerViewNewInternship.adapter = newInternshipAdapter
     }
 
     override fun onDestroyView() {

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -23,13 +24,14 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 
+
 class FragmentHomeUser : Fragment() {
 
     private lateinit var binding: FragmentHomeUserBinding
     private lateinit var recyclerViewActivelyHiring: RecyclerView
     private lateinit var activelyHiringList: ArrayList<Internship>
     private lateinit var activelyHiringAdapter: ActivelyHiringAdapter
-
+    private lateinit var dataList: MutableList<Internship>
 
     private lateinit var auth : FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
@@ -38,17 +40,34 @@ class FragmentHomeUser : Fragment() {
     private lateinit var uid: String
     private lateinit var eventListener: ValueEventListener
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeUserBinding.inflate(layoutInflater)
         return binding.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //search
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Handle the submission of the query
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchList(newText)
+                Log.e("newText",newText)
+                return true
+            }
+        })
+
 
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setTitle("Data Loading...")
@@ -60,10 +79,8 @@ class FragmentHomeUser : Fragment() {
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(recyclerViewActivelyHiring)
         activelyHiringList = ArrayList()
-
         activelyHiringAdapter = ActivelyHiringAdapter(activelyHiringList, requireContext())
         recyclerViewActivelyHiring.adapter = activelyHiringAdapter
-
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
         databaseReference = FirebaseDatabase.getInstance().getReference("Users")
@@ -94,6 +111,9 @@ class FragmentHomeUser : Fragment() {
                     // Update the adapter after retrieving the data
                     activelyHiringAdapter.notifyDataSetChanged()
 
+                    // Update dataList after retrieving the data
+                    dataList = activelyHiringList.toMutableList()
+
                     progressDialog.dismiss()
                 }
 
@@ -102,6 +122,8 @@ class FragmentHomeUser : Fragment() {
                     progressDialog.dismiss()
                 }
             })
+
+
 
     }
 
@@ -117,11 +139,20 @@ class FragmentHomeUser : Fragment() {
                     Log.e("FragmentHomeUser", "User snapshot is null")
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Log.e("FragmentHomeUser", "Database error: ${error.message}")
             }
         })
     }
 
+    private fun searchList(text: String){
+        val searchList = ArrayList<Internship>()
+        for (dataClass in dataList){
+            if(dataClass.title?.lowercase()?.contains(text.lowercase()) == true){
+                searchList.add(dataClass)
+            }
+        }
+        activelyHiringAdapter = ActivelyHiringAdapter(searchList, requireContext())
+        recyclerViewActivelyHiring.adapter = activelyHiringAdapter
+    }
 }

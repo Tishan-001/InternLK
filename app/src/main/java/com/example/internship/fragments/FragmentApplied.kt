@@ -50,7 +50,7 @@ class FragmentApplied : Fragment() {
 
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         newInternshipList = ArrayList()
-        newInternshipAdapter = NewInternshipAdapter(newInternshipList)
+        newInternshipAdapter = NewInternshipAdapter(newInternshipList, requireContext())
 
         val layoutManagerNewInternship = GridLayoutManager(context, 1)
         recyclerViewNewInternship = view.findViewById(R.id.applicationsRecycle)

@@ -3,28 +3,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:fitsSystemWindows="true"
+        tools:ignore="MissingConstraints">
+    <ImageButton
+        android:id="@+id/backApply"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/icons8_back"
+        android:background="@color/primary"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageButton
-                android:id="@+id/backApply"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_rounded_small"
-                android:backgroundTint="@color/cardBackground"
-                android:src="@drawable/icons8_back"
-                app:tint="@color/primary" />
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
 
             <EditText
                 android:id="@+id/Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/backApply"
+                android:layout_marginTop="100dp"
                 android:hint="Name" />
 
             <EditText

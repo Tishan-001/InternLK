@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.EditCompanyProfileActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:fitsSystemWindows="true"
+        tools:ignore="MissingConstraints">
+    </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +23,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="80dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_profile_pic" />
 
@@ -27,12 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/profileImage"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text=""
             android:textSize="24sp"
             android:textStyle="bold" />
-
-
 
         <EditText
             android:id="@+id/editTextName"
@@ -42,7 +47,7 @@
             android:inputType="textPersonName"
             android:layout_marginLeft="20dp"
             android:width="300dp"
-            android:layout_marginTop="200dp"/>
+            android:layout_marginTop="300dp"/>
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -52,7 +57,7 @@
             android:inputType="textPersonName"
             android:layout_marginLeft="20dp"
             android:width="300dp"
-            android:layout_marginTop="250dp"/>
+            android:layout_marginTop="350dp"/>
 
         <EditText
             android:id="@+id/editTextLocation"
@@ -62,16 +67,16 @@
             android:inputType="textPersonName"
             android:layout_marginLeft="20dp"
             android:width="300dp"
-            android:layout_marginTop="300dp"/>
+            android:layout_marginTop="400dp"/>
 
         <Button
-            android:id="@+id/btn_edit"
+            android:id="@+id/btnsaveCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SAVE"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="400dp"/>
+            android:layout_marginTop="450dp"/>
 
     </RelativeLayout>
 

@@ -27,6 +27,7 @@
                 android:layout_below="@+id/backUpload"
                 android:layout_margin="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="-32dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
@@ -36,6 +37,7 @@
                 android:id="@+id/choose_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/image_view"
                 android:layout_alignStart="@+id/image_view"
                 android:layout_marginStart="-8dp"
@@ -45,6 +47,7 @@
                 android:id="@+id/editTextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/choose_image"
                 android:hint="Title" />
 
@@ -52,6 +55,7 @@
                 android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/editTextTitle"
                 android:layout_marginTop="16dp"
                 android:hint="Company Name" />
@@ -60,6 +64,7 @@
                 android:id="@+id/editTextLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/editTextName"
                 android:layout_marginTop="16dp"
                 android:hint="Location" />
@@ -68,6 +73,7 @@
                 android:id="@+id/editTextDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/editTextLocation"
                 android:layout_marginTop="16dp"
                 android:hint="Duration" />
@@ -84,6 +90,7 @@
                 android:id="@+id/benefits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/requirements"
                 android:hint="benefits"
                 android:inputType="textMultiLine"
@@ -93,6 +100,7 @@
                 android:id="@+id/applyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_below="@+id/benefits"
                 android:layout_marginTop="20dp"
                 android:text="Apply" />
