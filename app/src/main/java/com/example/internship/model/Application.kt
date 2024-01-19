@@ -1,5 +1,7 @@
 package com.example.internship.model
 
+import java.io.Serializable
+
 data class Application(
     var name: String? = null,
     val contactNumber: String? = null,
@@ -14,4 +16,4 @@ data class Application(
     val companyId: String? = null,
     val internshipId: String? = null,
     val userId: String? = null,
-)
+): Serializable

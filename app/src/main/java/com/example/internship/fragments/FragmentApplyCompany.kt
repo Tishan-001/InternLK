@@ -55,7 +55,7 @@ class FragmentApplyCompany : Fragment() {
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(recyclerViewApplications)
         applcations = ArrayList()
-        applicationAdapter = ApplicationAdapter(applcations)
+        applicationAdapter = ApplicationAdapter(applcations, requireContext())
         recyclerViewApplications.adapter = applicationAdapter
 
         firebaseAuth = FirebaseAuth.getInstance()

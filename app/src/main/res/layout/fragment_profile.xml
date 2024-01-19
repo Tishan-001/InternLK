@@ -245,7 +245,7 @@
                 android:layout_below="@+id/shortDescription"
                 android:text="SIGN OUT"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="60dp"/>
 
             <Button
                 android:id="@+id/btn_edit"
@@ -256,16 +256,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"/>
         </LinearLayout>
-
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
-
 
     </RelativeLayout>
 

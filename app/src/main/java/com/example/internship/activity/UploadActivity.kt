@@ -74,7 +74,7 @@ class UploadActivity : AppCompatActivity() {
 
     private fun uploadImage(){
         if(fileUri != null){
-            val ref: StorageReference = FirebaseStorage.getInstance().getReference()
+            val ref: StorageReference = FirebaseStorage.getInstance().getReference("Internships Photos")
                 .child(UUID.randomUUID().toString())
             ref.putFile(fileUri!!).addOnSuccessListener {
                 ref.downloadUrl.addOnSuccessListener { uri ->
