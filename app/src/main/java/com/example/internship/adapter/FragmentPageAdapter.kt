@@ -11,16 +11,18 @@ import com.example.internship.model.Internship
 class FragmentPageAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle,
-    internship: Internship?
-) : FragmentStateAdapter(fragmentManager, lifecycle){
+    private val internship: Internship?
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
+
     override fun getItemCount(): Int {
         return 2
     }
-    val item = internship
+
     override fun createFragment(position: Int): Fragment {
-        return if (position == 0 && item != null)
-            FragmentDescription.newInstance(item)
-        else
-            FragmentAboutCompany()
+        return when (position) {
+            0 -> FragmentDescription.newInstance(internship)
+            1 -> FragmentAboutCompany.newInstance(internship)
+            else -> throw IllegalArgumentException("Invalid position: $position")
+        }
     }
 }

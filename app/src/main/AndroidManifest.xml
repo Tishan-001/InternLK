@@ -13,6 +13,14 @@
         android:theme="@style/Theme.Internship"
         tools:targetApi="31">
         <activity
+            android:name=".activity.EditInternshipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailsCompanyActivity"
+            android:exported="false"
+            android:label="@string/title_activity_details_company"
+            android:theme="@style/Theme.Internship" />
+        <activity
             android:name=".activity.AcceptActivity"
             android:exported="false"
             android:label="@string/title_activity_accept"
@@ -25,7 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.CompanyLoginActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activity.CompanySignupActivity"
             android:exported="false" />

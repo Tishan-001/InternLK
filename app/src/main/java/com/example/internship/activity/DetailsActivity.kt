@@ -41,8 +41,8 @@ class DetailsActivity : AppCompatActivity() {
         viewPager2 = findViewById(R.id.viewPager)
 
         adapter = FragmentPageAdapter(supportFragmentManager, lifecycle, item)
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.descriptions))
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.aboutCompany))
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.requirements))
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.benefit))
 
         viewPager2.adapter = adapter
 

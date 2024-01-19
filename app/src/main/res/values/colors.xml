@@ -12,4 +12,5 @@
     <color name="cardBackground">#F9F9FB</color>
     <color name="text">#161229</color>
     <color name="textSecondary">#959DB0</color>
+    <color name="background">#F2F1EB</color>
 </resources>

@@ -17,13 +17,12 @@ class FragmentDescription:Fragment() {
 
     private lateinit var binding: FragmentDescriptionBinding
     private lateinit var requirementRecyclerView: RecyclerView
-    private lateinit var benefitRecyclerView: RecyclerView
     private var internship: Internship? = null
 
     companion object {
-        private const val ARG_INTERNSHIP = "arg_internship"
+        const val ARG_INTERNSHIP = "arg_internship"
 
-        fun newInstance(item: Internship): FragmentDescription {
+        fun newInstance(item: Internship?): FragmentDescription {
             val fragment = FragmentDescription()
             val args = Bundle()
             args.putSerializable(ARG_INTERNSHIP, item)
@@ -42,12 +41,10 @@ class FragmentDescription:Fragment() {
         }
         val rootView = inflater.inflate(R.layout.fragment_description, container, false)
         requirementRecyclerView = rootView.findViewById(R.id.requirement)
-        benefitRecyclerView = rootView.findViewById(R.id.benefit)
 
         // Check if job is not null before proceeding
         internship?.let { validInternship ->
             setupRecyclerView(requirementRecyclerView, validInternship.requirement)
-            setupRecyclerView(benefitRecyclerView, validInternship.benefit)
         }
 
         return rootView

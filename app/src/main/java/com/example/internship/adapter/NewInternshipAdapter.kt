@@ -1,5 +1,7 @@
 package com.example.internship.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,10 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internship.R
+import com.example.internship.activity.DetailsCompanyActivity
 import com.example.internship.model.Internship
 import com.squareup.picasso.Picasso
 
-class NewInternshipAdapter(val items: ArrayList<Internship>): RecyclerView.Adapter<NewInternshipAdapter.Viewholder>()  {
+class NewInternshipAdapter(val items: ArrayList<Internship>, val context: Context?): RecyclerView.Adapter<NewInternshipAdapter.Viewholder>()  {
 
     class Viewholder(itemView: View): RecyclerView.ViewHolder(itemView)  {
         val image: ImageView = itemView.findViewById(R.id.image_row_new)
@@ -35,5 +38,11 @@ class NewInternshipAdapter(val items: ArrayList<Internship>): RecyclerView.Adapt
         holder.title.text = currentItem.title
         holder.company.text = currentItem.companyName
         holder.location.text = currentItem.location
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, DetailsCompanyActivity::class.java)
+            intent.putExtra("item", currentItem)
+            context?.startActivity(intent)
+        }
     }
 }

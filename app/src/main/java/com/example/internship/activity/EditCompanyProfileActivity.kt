@@ -67,7 +67,7 @@ class EditCompanyProfileActivity : AppCompatActivity() {
         }
 
 
-        binding.btnEdit.setOnClickListener {
+        binding.btnsaveCompany.setOnClickListener {
             if(uid.isNotEmpty()){
                 getCompanyData()
                 val name = binding.editTextName.text.toString()
