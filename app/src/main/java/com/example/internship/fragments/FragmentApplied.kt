@@ -28,7 +28,6 @@ class FragmentApplied : Fragment() {
     private lateinit var recyclerViewNewInternship: RecyclerView
     private lateinit var newInternshipList: ArrayList<Internship>
     private lateinit var newInternshipAdapter: NewInternshipAdapter
-    private lateinit var eventListener: ValueEventListener
 
     private lateinit var firebaseAuth: FirebaseAuth
 

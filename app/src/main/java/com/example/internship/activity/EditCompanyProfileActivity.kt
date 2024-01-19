@@ -32,8 +32,6 @@ class EditCompanyProfileActivity : AppCompatActivity() {
     private lateinit var company: Company
     private lateinit var uid: String
     private lateinit var auth : FirebaseAuth
-    private lateinit var firebase : FirebaseDatabase
-    private lateinit var storage : FirebaseStorage
     private lateinit var imageUrl: String
 
     private lateinit var galleryLauncher: ActivityResultLauncher<Intent>
@@ -46,8 +44,7 @@ class EditCompanyProfileActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         uid = auth.currentUser?.uid.toString()
-        database = FirebaseDatabase.getInstance().getReference("Users")
-        storage = FirebaseStorage.getInstance()
+        database = FirebaseDatabase.getInstance().getReference("Company")
 
         galleryLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
@@ -69,37 +66,32 @@ class EditCompanyProfileActivity : AppCompatActivity() {
             galleryLauncher.launch(galleryIntent)
         }
 
-        auth = FirebaseAuth.getInstance()
-        uid = auth.currentUser?.uid.toString()
-        database = FirebaseDatabase.getInstance().getReference("Users")
-
 
         binding.btnEdit.setOnClickListener {
-            val name = binding.editTextName.text.toString()
-            val email = binding.editTextEmail.text.toString()
-            val location = binding.editTextLocation.text.toString()
-
-            val imgUrl = imageUrl
-
-            val company = Company(name, email, imgUrl, location)
-            database.child(uid).setValue(company).addOnSuccessListener {
-
-                Toast.makeText(this, "Successfully Saved", Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener {
-                Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show()
-            }
-
-            val intent = Intent(this@EditCompanyProfileActivity, FragmentProfileCompany::class.java)
-            startActivity(intent)
-
             if(uid.isNotEmpty()){
                 getCompanyData()
+                val name = binding.editTextName.text.toString()
+                val email = binding.editTextEmail.text.toString()
+                val location = binding.editTextLocation.text.toString()
+
+                val imgUrl = imageUrl
+
+                val company = Company(name, email, imgUrl, location)
+                database.child(uid).setValue(company).addOnSuccessListener {
+
+                    Toast.makeText(this, "Successfully Saved", Toast.LENGTH_SHORT).show()
+                    val FragmentProfileCompany = FragmentProfileCompany()
+
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentProfileCompany, FragmentProfileCompany)
+                        .commit()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show()
+                }
             }
             else{
                 Log.e("FragmentHome", "Uid is null")
             }
-
-
         }
         if (uid.isNotEmpty()) {
             database = FirebaseDatabase.getInstance().getReference("Company")
@@ -126,7 +118,7 @@ class EditCompanyProfileActivity : AppCompatActivity() {
     }
 
     private fun uploadImage(imageUri: Uri) {
-        val imageRef: StorageReference = FirebaseStorage.getInstance().getReference("Profile Pictures")
+        val imageRef: StorageReference = FirebaseStorage.getInstance().getReference("Company Pictures")
             .child(UUID.randomUUID().toString())
 
         imageRef.putFile(imageUri)
@@ -149,6 +141,7 @@ class EditCompanyProfileActivity : AppCompatActivity() {
 
     private fun getCompanyData() {
         company.Name = binding.editTextName.text.toString()
+        company.email = binding.editTextEmail.text.toString()
 
         // Save the updated user data to Firebase
         database.child(uid).setValue(company)

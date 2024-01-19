@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.internship.R
 import com.example.internship.databinding.ActivityApplyBinding
+import com.example.internship.fragments.FragmentApplyCompany
 import com.example.internship.fragments.FragmentHomeUser
 import com.example.internship.model.Application
 import com.example.internship.model.Internship
@@ -86,13 +88,16 @@ class ApplyActivity : AppCompatActivity() {
                             binding.experience.text.clear()
                             binding.education.text.clear()
                             Toast.makeText(this, "Successfully Saved", Toast.LENGTH_SHORT).show()
+
+                            val fragmentHomeUser = FragmentHomeUser()
+
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.fragmentHome, fragmentHomeUser)
+                                .commit()
                         }.addOnFailureListener {
                             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
                         }
                 }
-
-                val homeIntent = Intent(this@ApplyActivity, FragmentHomeUser::class.java)
-                startActivity(homeIntent)
             }
         }
     }

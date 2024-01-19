@@ -1,5 +1,6 @@
 package com.example.internship.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -67,6 +68,12 @@ class DetailsActivity : AppCompatActivity() {
                 tabLayout.selectTab(tabLayout.getTabAt(position))
             }
         })
+
+        binding.applyButton.setOnClickListener{
+            val intent = Intent(this@DetailsActivity, ApplyActivity::class.java)
+            intent.putExtra("item", item)
+            startActivity(intent)
+        }
 
     }
 }
