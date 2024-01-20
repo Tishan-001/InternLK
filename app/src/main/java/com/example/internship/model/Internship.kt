@@ -4,12 +4,12 @@ import java.io.Serializable
 data class Internship(
     val id: String="",
     val imageUrl: String = "",
-    val title: String = "",
-    val companyName: String = "",
+    var title: String = "",
+    var companyName: String = "",
     val companyId: String = "",
-    val location: String = "",
-    val duration: String = "",
+    var location: String = "",
+    var duration: String = "",
     val applicants: Int = 0,
-    val requirement: ArrayList<String> = ArrayList(),
-    val benefit: ArrayList<String> = ArrayList()
+    var requirement: ArrayList<String> = ArrayList(),
+    var benefit: ArrayList<String> = ArrayList()
 ) : Serializable
