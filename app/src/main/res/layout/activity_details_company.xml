@@ -32,195 +32,75 @@
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/ic_profile_pic" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="210dp">
+                android:layout_marginTop="140dp"
+                android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/titleEdit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/companyImage"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Title:"
-                    android:textStyle="bold"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/titleInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/companyImage"
-                    android:layout_alignParentStart="true"
+                    android:hint="Edit title"
+                    android:inputType="textPersonName"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text=""
-                    android:textSize="12sp" />
+                    android:width="300dp"
+                    android:layout_marginTop="100dp"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="250dp">
-
-                <TextView
-                    android:id="@+id/CompanyName"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/companynameEdit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/companyImage"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Company Name:"
-                    android:textStyle="bold"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/CompanyNameInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/companyImage"
-                    android:layout_alignParentStart="true"
+                    android:hint="Edit company name"
+                    android:inputType="textPersonName"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text=""
-                    android:textSize="12sp" />
+                    android:width="300dp"
+                    android:layout_marginTop="160dp"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="300dp">
-
-                <TextView
-                    android:id="@+id/locationCompany"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/locationEdit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/CompanyName"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Location:"
-                    android:textStyle="bold"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/locationCompanyInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/CompanyName"
-                    android:layout_alignParentStart="true"
+                    android:hint="Edit location"
+                    android:inputType="textPersonName"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text=""
-                    android:textSize="12sp" />
+                    android:width="300dp"
+                    android:layout_marginTop="220dp"/>
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="350dp">
-
-                <TextView
-                    android:id="@+id/durationCompany"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/durationEdit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/CompanyName"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Duration:"
-                    android:textStyle="bold"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/durationCompanyInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/CompanyName"
-                    android:layout_alignParentStart="true"
+                    android:hint="Enter duration"
+                    android:inputType="textPersonName"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text=""
-                    android:textSize="12sp" />
+                    android:width="300dp"
+                    android:layout_marginTop="280dp"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="400dp">
-
-                <TextView
-                    android:id="@+id/requirements"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/requirementsEdit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/CompanyName"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Requirements:"
-                    android:textStyle="bold"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/requirementsInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/university"
-                    android:layout_alignParentStart="true"
+                    android:hint="Edir requirements"
+                    android:inputType="textPersonName"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="10dp"
-                    android:text=""
-                    android:textSize="12sp" />
-            </LinearLayout>
+                    android:width="300dp"
+                    android:layout_marginTop="340dp"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="52dp"
-                android:layout_marginTop="600dp">
-
-                <TextView
-                    android:id="@+id/benefits"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/benefitsEdit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/CompanyName"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Benefits:"
-                    android:textStyle="bold"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/benefitsInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/university"
-                    android:layout_alignParentStart="true"
+                    android:hint="Edit benifits"
+                    android:inputType="textPersonName"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="10dp"
-                    android:text=""
-                    android:textSize="12sp" />
-            </LinearLayout>
+                    android:width="300dp"
+                    android:layout_marginTop="480dp"/>
+
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -233,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/shortDescription"
-                    android:text="EDIT"
+                    android:text="EDIT &amp; Save"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="20dp"/>
 
@@ -242,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/shortDescription"
-                    android:text="DELIT"
+                    android:text="DELITE"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="20dp"/>
             </LinearLayout>

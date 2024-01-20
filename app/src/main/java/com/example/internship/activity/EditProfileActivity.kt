@@ -90,11 +90,7 @@ class EditProfileActivity : AppCompatActivity() {
                     database.child(uid).setValue(user).addOnSuccessListener {
 
                         Toast.makeText(this, "Successfully Saved", Toast.LENGTH_SHORT).show()
-                        val fragmentProfileUser = FragmentProfileUser()
-
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.fragmentProfile, fragmentProfileUser)
-                            .commit()
+                        finish()
                     }.addOnFailureListener {
                         Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show()
                     }
@@ -168,6 +164,7 @@ class EditProfileActivity : AppCompatActivity() {
         // Save the updated user data to Firebase
         database.child(uid).setValue(user)
             .addOnSuccessListener {
+                finish()
                 Log.d("FragmentHome", "User data updated successfully")
             }
             .addOnFailureListener { e ->

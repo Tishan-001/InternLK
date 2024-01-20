@@ -80,11 +80,7 @@ class EditCompanyProfileActivity : AppCompatActivity() {
                 database.child(uid).setValue(company).addOnSuccessListener {
 
                     Toast.makeText(this, "Successfully Saved", Toast.LENGTH_SHORT).show()
-                    val FragmentProfileCompany = FragmentProfileCompany()
-
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentProfileCompany, FragmentProfileCompany)
-                        .commit()
+                    finish()
                 }.addOnFailureListener {
                     Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show()
                 }
