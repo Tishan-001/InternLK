@@ -69,6 +69,12 @@ class DetailsCompanyActivity : AppCompatActivity() {
         internship.companyName = binding.companynameEdit.text.toString()
         internship.location = binding.locationEdit.text.toString()
         internship.duration = binding.durationEdit.text.toString()
+
+        if (internship.title.isEmpty() || internship.companyName.isEmpty() || internship.location.isEmpty() || internship.duration.isEmpty()) {
+            Toast.makeText(applicationContext, "Please fill in all the fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val requirements = binding.requirementsEdit.text.toString()
         val benefits = binding.benefitsEdit.text.toString()
         val requirementArrayList = ArrayList<String>()

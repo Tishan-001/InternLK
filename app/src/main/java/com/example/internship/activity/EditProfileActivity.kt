@@ -32,6 +32,7 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var user: User
     private lateinit var uid: String
     private lateinit var auth : FirebaseAuth
+    private lateinit var firebase : FirebaseDatabase
     private lateinit var storage : FirebaseStorage
     private lateinit var imageUrl: String
 
@@ -71,36 +72,46 @@ class EditProfileActivity : AppCompatActivity() {
             galleryLauncher.launch(galleryIntent)
         }
 
+        auth = FirebaseAuth.getInstance()
+        uid = auth.currentUser?.uid.toString()
+        database = FirebaseDatabase.getInstance().getReference("Users")
+
+
         binding.btnEdit.setOnClickListener {
+            val name = binding.editTextName.text.toString()
+            val email = binding.editTextEmail.text.toString()
+            val gender = binding.editTextGender.text.toString()
+            val experience = binding.editTextExperience.text.toString()
+            val skills = binding.editTextSkills.text.toString()
+            val university = binding.editTextUniversity.text.toString()
+            val description = binding.editTextDescription.text.toString()
+            val proffesion = binding.editTextProffesion.text.toString()
+
+            val imgUrl = imageUrl
+
+            if (imgUrl != null) {
+                val user = User(name, email, gender, experience, skills, university, description, proffesion, imgUrl)
+                database.child(uid).setValue(user).addOnSuccessListener {
+
+                    Toast.makeText(this, "Successfully Saved", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Log.e("EditProfile", "Image URL is null")
+            }
+
+            val intent = Intent(this@EditProfileActivity, FragmentProfileUser::class.java)
+            startActivity(intent)
+
             if(uid.isNotEmpty()){
                 getUserData()
-                val name = binding.editTextName.text.toString()
-                val email = binding.editTextEmail.text.toString()
-                val gender = binding.editTextGender.text.toString()
-                val experience = binding.editTextExperience.text.toString()
-                val skills = binding.editTextSkills.text.toString()
-                val university = binding.editTextUniversity.text.toString()
-                val description = binding.editTextDescription.text.toString()
-                val proffesion = binding.editTextProffesion.text.toString()
-
-                val imgUrl = imageUrl
-
-                if (imgUrl != null) {
-                    val user = User(name, email, gender, experience, skills, university, description, proffesion, imgUrl)
-                    database.child(uid).setValue(user).addOnSuccessListener {
-
-                        Toast.makeText(this, "Successfully Saved", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }.addOnFailureListener {
-                        Toast.makeText(this, "Faild", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    Log.e("EditProfileActivity", "Image URL is null")
-                }
             }
             else{
                 Log.e("FragmentHome", "Uid is null")
             }
+
+
         }
         if (uid.isNotEmpty()) {
             database = FirebaseDatabase.getInstance().getReference("Users")
@@ -119,16 +130,16 @@ class EditProfileActivity : AppCompatActivity() {
                         binding.editTextDescription.setText(user.description)
 
                     } else {
-                        Log.e("EditProfileActivity", "User snapshot is null")
+                        Log.e("EditProfile", "User snapshot is null")
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.e("EditProfileActivity", "Database error: ${error.message}")
+                    Log.e("EditProfile", "Database error: ${error.message}")
                 }
             })
         } else {
-            Log.e("EditProfileActivity", "Uid is null")
+            Log.e("EditProfile", "Uid is null")
         }
 
 
@@ -159,12 +170,10 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun getUserData() {
         user.name = binding.editTextName.text.toString()
-        user.email = binding.editTextEmail.text.toString()
 
         // Save the updated user data to Firebase
         database.child(uid).setValue(user)
             .addOnSuccessListener {
-                finish()
                 Log.d("FragmentHome", "User data updated successfully")
             }
             .addOnFailureListener { e ->

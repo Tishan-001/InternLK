@@ -66,6 +66,11 @@ class ApplyActivity : AppCompatActivity() {
                 val companyId = item.companyId
                 val internshipId = item.id
 
+                if (name.isEmpty() || gender.isEmpty() || contact.isEmpty() || email.isEmpty() || university.isEmpty() || skills.isEmpty() || description.isEmpty() || experience.isEmpty() || education.isEmpty()) {
+                    Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
                 val application = Application(
                     name, contact, email, gender, experience, skills, university,
                     description, education, url, companyId, internshipId, uid
